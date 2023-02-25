@@ -6,10 +6,10 @@ import DatePicker from 'react-datepicker';
 import { addDays, setHours, setMinutes, subDays } from 'date-fns';
 import { Link } from 'react-router-dom';
 //''''''''''-From Here
-//import { Amplify, API, graphqlOperation } from 'aws-amplify';
-//import { createAppointment } from '../../../../graphql/mutations';
-//import awsExports from './../../../../aws-exports';
-//Amplify.configure(awsExports);
+import { Amplify, API, graphqlOperation } from 'aws-amplify';
+import { createAppointment } from '../../../../graphql/mutations';
+import awsExports from './../../../../aws-exports';
+Amplify.configure(awsExports);
 //''''''''''-TO Here
 const CreateAppointment = ({
   isOpenAppointmentModal,
@@ -62,7 +62,7 @@ const CreateAppointment = ({
       start: formData.start,
       isAccepted: formData.isAccepted
     });
-    //data => addAppointment(data);
+    data => addAppointment(data);
 
     formData.isAccepted = false;
   };
@@ -93,22 +93,22 @@ const CreateAppointment = ({
 
   const phoneNumberIsValid = checkPhoneNumber(formData.phoneNumber);
 
-  // async function addAppointment(data) {
-  //   //''''''''''-From Here
-  //   try {
-  //     // if (!formState.name || !formState.description) return;
-  //     // const appointment = { data };
-  //     console.log(data);
-  //     console.log('data');
-  //     // setAppointments([...appointments, appointment]);
-  //     //setData(initialState);
-  //     await API.graphql(graphqlOperation(createAppointment, { input: data }));
-  //   } catch (err) {
-  //     console.log('error creating appointment:', err);
-  //   }
-  //   //''''''''''-TO Here
-  //   ////handleClose();
-  // }
+  async function addAppointment(data) {
+    //''''''''''-From Here
+    try {
+      // if (!formState.name || !formState.description) return;
+      // const appointment = { data };
+      console.log(data);
+      console.log('data');
+      // setAppointments([...appointments, appointment]);
+      //setData(initialState);
+      await API.graphql(graphqlOperation(createAppointment, { input: data }));
+    } catch (err) {
+      console.log('error creating appointment:', err);
+    }
+    //''''''''''-TO Here
+    ////handleClose();
+  }
 
   return (
     <Modal
