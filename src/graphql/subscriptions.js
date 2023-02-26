@@ -11,6 +11,7 @@ export const onCreateAppointment = /* GraphQL */ `
       email
       phoneNumber
       start
+      isAccepted
       createdAt
       updatedAt
     }
@@ -26,6 +27,7 @@ export const onUpdateAppointment = /* GraphQL */ `
       email
       phoneNumber
       start
+      isAccepted
       createdAt
       updatedAt
     }
@@ -41,6 +43,7 @@ export const onDeleteAppointment = /* GraphQL */ `
       email
       phoneNumber
       start
+      isAccepted
       createdAt
       updatedAt
     }

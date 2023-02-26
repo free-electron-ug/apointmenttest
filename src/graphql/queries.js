@@ -9,6 +9,7 @@ export const getAppointment = /* GraphQL */ `
       email
       phoneNumber
       start
+      isAccepted
       createdAt
       updatedAt
     }
@@ -27,6 +28,7 @@ export const listAppointments = /* GraphQL */ `
         email
         phoneNumber
         start
+        isAccepted
         createdAt
         updatedAt
       }

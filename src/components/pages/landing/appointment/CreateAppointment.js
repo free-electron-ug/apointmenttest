@@ -51,6 +51,23 @@ const CreateAppointment = ({
     let value = name === 'allDay' ? target.checked : target.value;
     setFormData({ ...formData, [name]: value });
   };
+
+  async function addAppointment(data) {
+    console.log('inja');
+    //''''''''''-From Here
+    try {
+      // if (!formState.name || !formState.description) return;
+      // const appointment = { data };
+      console.log(data);
+      // setAppointments([...appointments, appointment]);
+      //setData(initialState);
+      await API.graphql(graphqlOperation(createAppointment, { input: data }));
+    } catch (err) {
+      console.log('error creating appointment:', err);
+    }
+    //''''''''''-TO Here
+    ////handleClose();
+  }
   const handleSubmit = e => {
     e.preventDefault();
     setIsOpenAppointmentModal(false);
@@ -63,7 +80,7 @@ const CreateAppointment = ({
       isAccepted: formData.isAccepted
     });
     data => addAppointment(data);
-
+    //addAppointment(formData);
     formData.isAccepted = false;
   };
   useEffect(() => {
@@ -92,23 +109,6 @@ const CreateAppointment = ({
   };
 
   const phoneNumberIsValid = checkPhoneNumber(formData.phoneNumber);
-
-  async function addAppointment(data) {
-    //''''''''''-From Here
-    try {
-      // if (!formState.name || !formState.description) return;
-      // const appointment = { data };
-      console.log(data);
-      console.log('data');
-      // setAppointments([...appointments, appointment]);
-      //setData(initialState);
-      await API.graphql(graphqlOperation(createAppointment, { input: data }));
-    } catch (err) {
-      console.log('error creating appointment:', err);
-    }
-    //''''''''''-TO Here
-    ////handleClose();
-  }
 
   return (
     <Modal

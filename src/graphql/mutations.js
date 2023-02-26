@@ -12,6 +12,7 @@ export const createAppointment = /* GraphQL */ `
       email
       phoneNumber
       start
+      isAccepted
       createdAt
       updatedAt
     }
@@ -28,6 +29,7 @@ export const updateAppointment = /* GraphQL */ `
       email
       phoneNumber
       start
+      isAccepted
       createdAt
       updatedAt
     }
@@ -44,6 +46,7 @@ export const deleteAppointment = /* GraphQL */ `
       email
       phoneNumber
       start
+      isAccepted
       createdAt
       updatedAt
     }
