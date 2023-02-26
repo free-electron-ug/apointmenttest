@@ -53,12 +53,12 @@ const CreateAppointment = ({
   };
 
   async function addAppointment(data) {
-    console.log('inja');
+    //console.log('inja');
     //''''''''''-From Here
     try {
       // if (!formState.name || !formState.description) return;
       // const appointment = { data };
-      console.log(data);
+      //console.log(data);
       // setAppointments([...appointments, appointment]);
       //setData(initialState);
       await API.graphql(graphqlOperation(createAppointment, { input: data }));
@@ -72,15 +72,16 @@ const CreateAppointment = ({
     e.preventDefault();
     setIsOpenAppointmentModal(false);
 
-    console.log({
-      name: formData.name,
-      email: formData.email,
-      phoneNumber: formData.phoneNumber,
-      start: formData.start,
-      isAccepted: formData.isAccepted
-    });
-    data => addAppointment(data);
-    //addAppointment(formData);
+    // console.log({
+    //   name: formData.name,
+    //   email: formData.email,
+    //   phoneNumber: formData.phoneNumber,
+    //   start: formData.start,
+    //   isAccepted: formData.isAccepted
+    // });
+    //following line in false!
+    //data => addAppointment(data);
+    addAppointment(formData);
     formData.isAccepted = false;
   };
   useEffect(() => {
@@ -126,7 +127,7 @@ const CreateAppointment = ({
         </Modal.Header>
         <Modal.Body className="p-x1">
           <Form.Group className="mb-3">
-            <Form.Label className="fs-0">How may We address you2?</Form.Label>
+            <Form.Label className="fs-0">How may We address you?</Form.Label>
             {hasLabel && <Form.Label>Name</Form.Label>}
             <Form.Control
               placeholder={!hasLabel ? 'Mr. John Smith' : ''}
@@ -173,19 +174,66 @@ const CreateAppointment = ({
                 setAppointmentDate(date);
                 setFormData({ ...formData, start: date });
               }}
-              timeIntervals={30}
+              timeIntervals={120}
+              //https://reactdatepicker.com/#example-custom-day
               className="form-control"
               placeholderText="DD-MM-YYYY HH:MM"
-              dateFormat="dd-mm-yyyy hh:mm"
+              dateFormat="d-MM-yyyy h:mm"
               filterDate={isWeekday}
               filterTime={filterPassedTime}
               minDate={subDays(new Date(), 1)}
               maxDate={addDays(new Date(), 31)}
               excludeTimes={[
+                setHours(setMinutes(new Date(), 0), 0),
+                setHours(setMinutes(new Date(), 30), 0),
+                setHours(setMinutes(new Date(), 0), 1),
+                setHours(setMinutes(new Date(), 30), 1),
+                setHours(setMinutes(new Date(), 0), 2),
+                setHours(setMinutes(new Date(), 30), 2),
+                setHours(setMinutes(new Date(), 0), 3),
+                setHours(setMinutes(new Date(), 30), 3),
+                setHours(setMinutes(new Date(), 0), 4),
+                setHours(setMinutes(new Date(), 30), 4),
+                setHours(setMinutes(new Date(), 0), 5),
+                setHours(setMinutes(new Date(), 30), 5),
+                setHours(setMinutes(new Date(), 0), 6),
+                setHours(setMinutes(new Date(), 30), 6),
+                setHours(setMinutes(new Date(), 0), 7),
+                setHours(setMinutes(new Date(), 30), 7),
+                //setHours(setMinutes(new Date(), 0), 8),
+                setHours(setMinutes(new Date(), 30), 8),
+                setHours(setMinutes(new Date(), 0), 9),
+                setHours(setMinutes(new Date(), 30), 9),
+                //setHours(setMinutes(new Date(), 0), 10),
+                setHours(setMinutes(new Date(), 30), 10),
+                setHours(setMinutes(new Date(), 0), 11),
+                setHours(setMinutes(new Date(), 30), 11),
+                //setHours(setMinutes(new Date(), 0), 12),
+                setHours(setMinutes(new Date(), 30), 12),
+                setHours(setMinutes(new Date(), 0), 13),
+                setHours(setMinutes(new Date(), 30), 13),
+                setHours(setMinutes(new Date(), 0), 14),
+                setHours(setMinutes(new Date(), 30), 14),
+                setHours(setMinutes(new Date(), 0), 15),
+                setHours(setMinutes(new Date(), 30), 15),
+                setHours(setMinutes(new Date(), 0), 16),
+                setHours(setMinutes(new Date(), 30), 16),
                 setHours(setMinutes(new Date(), 0), 17),
+                setHours(setMinutes(new Date(), 30), 17),
+                setHours(setMinutes(new Date(), 0), 18),
                 setHours(setMinutes(new Date(), 30), 18),
+                setHours(setMinutes(new Date(), 0), 19),
                 setHours(setMinutes(new Date(), 30), 19),
-                setHours(setMinutes(new Date(), 30), 17)
+                setHours(setMinutes(new Date(), 0), 20),
+                setHours(setMinutes(new Date(), 30), 20),
+                setHours(setMinutes(new Date(), 0), 21),
+                setHours(setMinutes(new Date(), 30), 21),
+                setHours(setMinutes(new Date(), 0), 22),
+                setHours(setMinutes(new Date(), 30), 22),
+                setHours(setMinutes(new Date(), 0), 23),
+                setHours(setMinutes(new Date(), 30), 23),
+                setHours(setMinutes(new Date(), 0), 24),
+                setHours(setMinutes(new Date(), 30), 24)
               ]}
               showTimeSelect
             />

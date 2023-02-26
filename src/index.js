@@ -8,9 +8,7 @@ const container = document.getElementById('main');
 const root = createRoot(container);
 
 root.render(
-  <React.StrictMode>
-    <Main>
-      <App />
-    </Main>
-  </React.StrictMode>
+  <Main>
+    <App />
+  </Main>
 );
